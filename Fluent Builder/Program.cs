@@ -23,7 +23,6 @@ namespace Fluent_Builder
             {
                 return $"Name {person.Name} , Position {person.Position}";
             }
-
         }
 
         internal class PersonInfoBuilder<SELF> : PersonBuilder where SELF : PersonInfoBuilder<SELF>
@@ -37,20 +36,18 @@ namespace Fluent_Builder
 
         internal class PersonJobBuilder<SELF> : PersonInfoBuilder<SELF> where SELF : PersonJobBuilder<SELF>
         {
-
             public SELF WorksAs(string Position)
             {
                 person.Position = Position;
                 return (SELF)this;
             }
-
-
         }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
-            var p = Builder.New();
+            var p = Builder.New(); //PersonJobBuilder
             p.CalledAs("Hemant").WorksAs("SE");
             Console.WriteLine(p);
             Console.Read();
